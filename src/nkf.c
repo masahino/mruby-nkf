@@ -208,7 +208,9 @@ mrb_nkf_guess(mrb_state *mrb, mrb_value self)
      kanji_convert( NULL );
      guess_f = FALSE;
 
-     if (strcmp(input_codename, "") == 0) {
+     if (!input_codename) {
+	  code = _ASCII;
+     } else if (strcmp(input_codename, "") == 0) {
 	  code = _ASCII;
      } else if (strcmp(input_codename, "ISO-2022-JP") == 0) {
 	  code = _JIS;
