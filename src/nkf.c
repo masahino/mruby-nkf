@@ -524,11 +524,11 @@ mrb_mruby_nkf_gem_init(mrb_state *mrb)
      mrb_define_const(mrb, mrb_nkf, "UTF32",      mrb_fixnum_value(_UTF32));
 
     /* Full version string of nkf */
-     mrb_define_const(mrb, mrb_nkf, "VERSION", mrb_str_new2(mrb, RUBY_NKF_VERSION));
+     mrb_define_const(mrb, mrb_nkf, "VERSION", mrb_str_new_cstr(mrb, RUBY_NKF_VERSION));
     /* Version of nkf */
-     mrb_define_const(mrb, mrb_nkf, "NKF_VERSION", mrb_str_new2(mrb, NKF_VERSION));
+     mrb_define_const(mrb, mrb_nkf, "NKF_VERSION", mrb_str_new_cstr(mrb, NKF_VERSION));
     /* Release date of nkf */
-     mrb_define_const(mrb, mrb_nkf, "NKF_RELEASE_DATE", mrb_str_new2(mrb, NKF_RELEASE_DATE));
+     mrb_define_const(mrb, mrb_nkf, "NKF_RELEASE_DATE", mrb_str_new_cstr(mrb, NKF_RELEASE_DATE));
 
 }
 
