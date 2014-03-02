@@ -53,8 +53,6 @@ assert('Kconv utf8') do
 
 #  utf8_str.isutf8 == true
   ::Kconv::UTF8 == Kconv.guess(utf8_str)
-  puts euc_str.toutf8
-  puts utf8_str
   utf8_str == euc_str.toutf8
   utf8_str == sjis_str.toutf8
   utf8_str == utf8_str.toutf8
