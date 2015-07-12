@@ -508,9 +508,9 @@ mrb_mruby_nkf_gem_init(mrb_state *mrb)
      mrb_nkf = mrb_define_module(mrb, "NKF");
 
      mrb_define_module_function(mrb, mrb_nkf, "nkf", mrb_nkf_convert, 
-				ARGS_REQ(2));
+				MRB_ARGS_REQ(2));
      mrb_define_module_function(mrb, mrb_nkf, "guess", mrb_nkf_guess,
-				ARGS_REQ(1));
+				MRB_ARGS_REQ(1));
 
      mrb_define_const(mrb, mrb_nkf, "AUTO",       mrb_fixnum_value(_AUTO));
      mrb_define_const(mrb, mrb_nkf, "NOCONV",     mrb_fixnum_value(_NOCONV));
