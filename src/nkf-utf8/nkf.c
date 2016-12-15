@@ -840,8 +840,8 @@ typedef struct {
 static nkf_buf_t *
 nkf_buf_new(int length)
 {
-    nkf_buf_t *buf = nkf_xmalloc(sizeof(nkf_buf_t));
-    buf->ptr = nkf_xmalloc(sizeof(nkf_char) * length);
+    nkf_buf_t *buf = (nkf_buf_t *)nkf_xmalloc(sizeof(nkf_buf_t));
+    buf->ptr = (nkf_char *)nkf_xmalloc(sizeof(nkf_char) * length);
     buf->capa = length;
     buf->len = 0;
     return buf;
@@ -3316,7 +3316,7 @@ nkf_state_init(void)
 	nkf_buf_clear(nkf_state->nfc_buf);
     }
     else {
-	nkf_state = nkf_xmalloc(sizeof(nkf_state_t));
+	nkf_state = (nkf_state_t *)nkf_xmalloc(sizeof(nkf_state_t));
 	nkf_state->std_gc_buf = nkf_buf_new(STD_GC_BUFSIZE);
 	nkf_state->broken_buf = nkf_buf_new(3);
 	nkf_state->nfc_buf = nkf_buf_new(9);
@@ -4840,7 +4840,7 @@ mime_getc(FILE *f)
 	    /* end Q encoding */
 	    input_mode = exit_mode;
 	    lwsp_count = 0;
-	    lwsp_buf = nkf_xmalloc((lwsp_size+5)*sizeof(char));
+	    lwsp_buf = (char *)nkf_xmalloc((lwsp_size+5)*sizeof(char));
 	    while ((c1=(*i_getc)(f))!=EOF) {
 		switch (c1) {
 		case LF:
@@ -4873,7 +4873,7 @@ mime_getc(FILE *f)
 		    lwsp_buf[lwsp_count] = (unsigned char)c1;
 		    if (lwsp_count++>lwsp_size){
 			lwsp_size <<= 1;
-			lwsp_buf_new = nkf_xrealloc(lwsp_buf, (lwsp_size+5)*sizeof(char));
+			lwsp_buf_new = (char *)nkf_xrealloc(lwsp_buf, (lwsp_size+5)*sizeof(char));
 			lwsp_buf = lwsp_buf_new;
 		    }
 		    continue;
@@ -4939,7 +4939,7 @@ mime_getc(FILE *f)
     if ((c1 == '?') && (c2 == '=')) {
 	input_mode = ASCII;
 	lwsp_count = 0;
-	lwsp_buf = nkf_xmalloc((lwsp_size+5)*sizeof(char));
+	lwsp_buf = (char *)nkf_xmalloc((lwsp_size+5)*sizeof(char));
 	while ((c1=(*i_getc)(f))!=EOF) {
 	    switch (c1) {
 	    case LF:
@@ -4975,7 +4975,7 @@ mime_getc(FILE *f)
 		lwsp_buf[lwsp_count] = (unsigned char)c1;
 		if (lwsp_count++>lwsp_size){
 		    lwsp_size <<= 1;
-		    lwsp_buf_new = nkf_xrealloc(lwsp_buf, (lwsp_size+5)*sizeof(char));
+		    lwsp_buf_new = (char *)nkf_xrealloc(lwsp_buf, (lwsp_size+5)*sizeof(char));
 		    lwsp_buf = lwsp_buf_new;
 		}
 		continue;
